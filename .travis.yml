@@ -17,9 +17,13 @@ before_install:
   - docker build -t todoapp app/
   - docker run -td --rm -p 127.0.0.1:4444:4444 --name selenium selenium/hub:${SELENIUM_VERSION}
   - docker run -td --rm -p 127.0.0.1:8080:80 --name todoapp todoapp
-  - docker run -td --rm -e HUB_HOST=selenium -e HUB_PORT=4444 --link selenium --link todoapp selenium/node-chrome:${SELENIUM_VERSION}
-  - docker run -td --rm -e HUB_HOST=selenium -e HUB_PORT=4444 --link selenium --link todoapp selenium/node-firefox:${SELENIUM_VERSION}
+  - docker run -td --rm -e HUB_HOST=selenium -e HUB_PORT=4444 --name chrome --link selenium --link todoapp selenium/node-chrome:${SELENIUM_VERSION}
+  - docker run -td --rm -e HUB_HOST=selenium -e HUB_PORT=4444 --name firefox --link selenium --link todoapp selenium/node-firefox:${SELENIUM_VERSION}
   - docker ps -a
+  - docker logs selenium
+  - docker logs chrome
+  - docker logs firefox
+  - docker logs todoapp
 
 script:
   - npm test
