@@ -1,4 +1,5 @@
 // http://webdriver.io/guide/testrunner/configurationfile.html
+
 exports.config = {
   host: resolveSeleniumHost(),
   port: 4444,
@@ -26,6 +27,7 @@ exports.config = {
   reporters: ['spec'],
   mochaOpts: {
     ui: 'bdd',
+    timeout: 30000,
     compilers: ['js:babel-register'],
   },
   afterTest: function (test) {
