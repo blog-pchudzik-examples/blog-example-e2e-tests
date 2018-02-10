@@ -1,4 +1,8 @@
 // http://webdriver.io/guide/testrunner/configurationfile.html
+
+console.log('using ' + resolveSeleniumHost() + ' as selenium host');
+console.log('using ' + resolveDestination() + ' as application host');
+
 exports.config = {
   host: resolveSeleniumHost(),
   port: 4444,
