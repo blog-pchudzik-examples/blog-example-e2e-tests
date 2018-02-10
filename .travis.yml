@@ -13,7 +13,7 @@ services:
 
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install -qy build-essential
+  - sudo apt-get install -qy build-essential curl
   - docker build -t todoapp app/
   - docker run -td --rm -p 127.0.0.1:4444:4444 --name selenium selenium/hub:${SELENIUM_VERSION}
   - docker run -td --rm -p 127.0.0.1:8080:80 --name todoapp todoapp
@@ -26,4 +26,5 @@ before_install:
   - docker logs todoapp
 
 script:
+  - curl http://localhost:8080
   - npm test
