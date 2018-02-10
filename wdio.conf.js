@@ -30,6 +30,7 @@ exports.config = {
   reporters: ['spec'],
   mochaOpts: {
     ui: 'bdd',
+    timeout: 30000,
     compilers: ['js:babel-register'],
   },
   afterTest: function (test) {
