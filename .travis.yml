@@ -20,18 +20,6 @@ before_install:
   - docker run -td --rm -p 127.0.0.1:8080:80 --name todoapp todoapp
   - docker run -td --rm -e HUB_HOST=selenium -e HUB_PORT=4444 --name chrome --link selenium --link todoapp selenium/node-chrome:${SELENIUM_VERSION}
   - docker run -td --rm -e HUB_HOST=selenium -e HUB_PORT=4444 --name firefox --link selenium --link todoapp selenium/node-firefox:${SELENIUM_VERSION}
-  - docker ps -a
-  - docker logs selenium
-  - docker logs chrome
-  - docker logs firefox
-  - docker logs todoapp
 
 script:
-  - curl http://localhost:8080
-  - npm test || true
-  - docker logs selenium
-  - docker logs chrome
-  - docker logs firefox
-  - docker logs todoapp
-  - docker run --rm -it --link selenium --link todoapp alpine apk add --no-cache curl && curl http://todoapp
-  - docker run --rm -it --link selenium --link todoapp alpine echo exit | telnet selenium 4444
+  - npm test

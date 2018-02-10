@@ -18,7 +18,7 @@ exports.config = {
     { browserName: 'firefox' }
   ],
   sync: true,
-  logLevel: 'verbose', // silent | verbose | command | data | result | error
+  logLevel: 'silent', // silent | verbose | command | data | result | error
   coloredLogs: true,
   deprecationWarnings: false,
   bail: 0,
